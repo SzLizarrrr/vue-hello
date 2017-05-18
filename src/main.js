@@ -5,6 +5,7 @@ import App from './App'
 import VueRouter from 'vue-router'
 import goods from './components/goods/goods'
 
+/* very important for router */
 Vue.use(VueRouter)
 
 /* eslint-disable no-new */
@@ -21,5 +22,9 @@ new Vue({
   components: {App}
 })
 
-// const app = new Vue({router}).$mount('#app')
+// const app = new Vue({
+//   el: '#app',
+//   router,
+//   render: h => h(App)
+// }).$mount('#app')
 

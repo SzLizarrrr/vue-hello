@@ -1,15 +1,21 @@
 <template>
-  <div id="app">
+  <div>
     <v-header></v-header>
+
     <div class="tab">
-      <div class="tab-item">goods</div>
-      <div class="tab-item">comments</div>
-      <div class="tab-item">sellers</div>
+      <div class="tab-item">
+        <router-link to="/goods">Goods</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/ratings">Ratings</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/seller">Seller</router-link>
+      </div>
     </div>
 
-    <div class="content">
-      I am Content!
-    </div>
+    <router-view></router-view>
+
   </div>
 </template>
 
@@ -25,13 +31,12 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  #app
-    .tab
-      display: flex
-      width: 100%
-      height: 40px
-      line-height: 40px
-      .tab-item
-        flex: 1
-        text-align: center
+  .tab
+    display: flex
+    width: 100%
+    height: 40px
+    line-height: 40px
+    .tab-item
+      flex: 1
+      text-align: center
 </style>

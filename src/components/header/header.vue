@@ -2,7 +2,7 @@
   <div class="header">
     <div class="content-wrapper">
       <div class="avatar">
-        <img width="64" height="64" :src="seller.avatar"/>
+        <img width="64" height="64" :src="seller.avatar">
       </div>
       <div class="content">
         <div class="title">
@@ -49,7 +49,11 @@
   @import "../../common/stylus/mixin"
 
   .header
+    position: relative
+    overflow: hidden
     color: #fff
+    background: rgba(7, 17, 27, 0.5)
+    
     .content-wrapper
       position: relative
       padding: 24px 12px 18px 24px
@@ -59,6 +63,7 @@
         vertical-align: top
         img
           border-radius: 2px
+
       .content
         display: inline-block
         margin-left: 16px
@@ -77,6 +82,7 @@
             font-size: 16px
             line-height: 18px
             font-weight: bold
+            
         .description
           margin-bottom: 10px
           line-height: 12px
@@ -103,6 +109,7 @@
           .text
             line-height: 12px
             font-size: 10px
+            
       .support-count
         position: absolute
         right: 12px
@@ -120,6 +127,7 @@
           margin-left: 2px
           line-height: 24px
           font-size: 10px
+          
     .bulletin-wrapper
       position: relative
       height: 28px
@@ -147,11 +155,12 @@
         font-size: 10px
         right: 12px
         top: 8px
+        
     .background
       position: absolute
       top: 0
       left: 0
       width: 100%
-      height: 100%
       z-index: -1
+      filter: blur(10px)
 </style>

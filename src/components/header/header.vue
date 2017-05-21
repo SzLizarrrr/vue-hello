@@ -37,14 +37,14 @@
             <div class="star-wrapper">
               <star :size="48" :score="seller.score"></star>
             </div>
-            <v-title :content="'Special Offers'"></v-title>
+            <detail-title :content="'Special Offers'"></detail-title>
             <ul v-if="seller.supports" class="supports">
               <li class="support-item" v-for="(item,index) in seller.supports">
                 <span class="icon" :class="classMap[seller.supports[index].type]"></span>
                 <span class="text">{{seller.supports[index].description}}</span>
               </li>
             </ul>
-            <v-title :content="'Bulletin'"></v-title>
+            <detail-title :content="'Bulletin'"></detail-title>
             <div class="bulletin">
               <p class="content">{{seller.bulletin}}</p>
             </div>
@@ -59,8 +59,8 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import star from '@/components/star/star'
-  import title from '@/components/title/title'
+  import star from '@/components/star/Star'
+  import detailTitle from '@/components/lizard/DetailTitle'
 
   export default {
     props: {
@@ -86,7 +86,7 @@
     },
     components: {
       star,
-      'v-title': title
+      'detail-title': detailTitle
     }
   }
 </script>

@@ -18,7 +18,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .detail-title //was using "title", but conflict with header.vue's title css
+  .detail-title //was using "lizard", but conflict with header.vue's lizard css
     display: flex
     width: 80%
     margin: 28px auto 24px auto

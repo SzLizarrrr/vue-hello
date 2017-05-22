@@ -21,3 +21,22 @@ bg-image($url)
   background-image: url($url + "@2x.png")
   @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
     background-image: url($url + "@3x.png")
+
+publ-icon($id, $size, $mg)
+  display: inline-block
+  vertical-align: top
+  width: $size
+  height: $size
+  margin-right: $mg
+  background-size: $size $size
+  background-repeat: no-repeat
+  &.decrease
+    bg-image('decrease_' + $id)
+  &.discount
+    bg-image('discount_' + $id)
+  &.guarantee
+    bg-image('guarantee_' + $id)
+  &.invoice
+    bg-image('invoice_' + $id)
+  &.special
+    bg-image('special_' + $id)

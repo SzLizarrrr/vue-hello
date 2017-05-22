@@ -10,6 +10,30 @@
       </ul>
     </div>
     <div class="foods-wrapper"></div>
+      <ul>
+        <li v-for="item in goods" class="food-list">
+          <h1 class="title">{{item.name}}</h1>
+          <ul>
+            <li v-for="food in item.foods" class="food-item">
+              <div class="icon">
+                <img :src="food.icon"/>
+              </div>
+              <div class="content">
+                <h2 class="name">{{food.name}}</h2>
+                <p class="desc">{{food.description}}</p>
+                <div class="extra">
+                  <span>{{food.sellCount}} selled per month.</span>
+                  <span>Rate{{food.rating}}%</span>
+                </div>
+                <div class="price">
+                  <span>￥{{food.price}}</span>
+                  <span v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
   </div>
 </template>
 
@@ -61,23 +85,7 @@
         padding: 0 12px
         line-height: 14px
         .icon
-          display: inline-block
-          vertical-align: top
-          width: 12px
-          height: 12px
-          margin-right: 2px
-          background-size: 12px 12px
-          background-repeat: no-repeat
-          &.decrease
-            bg-image('decrease_3')
-          &.discount
-            bg-image('discount_3')
-          &.guarantee
-            bg-image('guarantee_3')
-          &.invoice
-            bg-image('invoice_3')
-          &.special
-            bg-image('special_3')
+          publ-icon(3, 12px, 2px)
         .text
           display: table-cell
           width: 56px

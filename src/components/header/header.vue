@@ -61,6 +61,7 @@
 <script type="text/ecmascript-6">
   import star from '@/components/star/Star'
   import detailTitle from '@/components/lizard/DetailTitle'
+//  import domain from '@/components/lizard/Domain'
 
   export default {
     props: {
@@ -82,6 +83,7 @@
       }
     },
     created() {
+//        this.classMap = domain.classMap
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
     },
     components: {
@@ -132,23 +134,7 @@
           font-size: 12px
         .support
           .icon
-            display: inline-block
-            vertical-align: top
-            width: 12px
-            height: 12px
-            margin-right: 4px
-            background-size: 12px 12px
-            background-repeat: no-repeat
-            &.decrease
-              bg-image('decrease_1')
-            &.discount
-              bg-image('discount_1')
-            &.guarantee
-              bg-image('guarantee_1')
-            &.invoice
-              bg-image('invoice_1')
-            &.special
-              bg-image('special_1')
+            publ-icon(1, 12px, 4px)
           .text
             line-height: 12px
             font-size: 10px
@@ -244,23 +230,7 @@
               &:last-child
                 margin-bottom: 0
               .icon
-                display: inline-block
-                vertical-align: top
-                width: 16px
-                height: 16px
-                margin-right: 4px
-                background-size: 16px 16px
-                background-repeat: no-repeat
-                &.decrease
-                  bg-image('decrease_2')
-                &.discount
-                  bg-image('discount_2')
-                &.guarantee
-                  bg-image('guarantee_2')
-                &.invoice
-                  bg-image('invoice_2')
-                &.special
-                  bg-image('special_2')
+                publ-icon(2, 16px, 4px)
               .text
                 margin-left: 6px
                 font-size: 12px

@@ -1,6 +1,6 @@
 <template>
   <div class="goods">
-    <div class="menu-wrapper">
+    <div class="menu-wrapper" ref="menuWrapper">
       <ul>
         <li v-for="item in goods" class="menu-item">
           <span class="text border-1px">
@@ -9,7 +9,7 @@
         </li>
       </ul>
     </div>
-    <div class="foods-wrapper">
+    <div class="foods-wrapper" ref="foodsWrapper">
       <ul>
         <li v-for="item in goods" class="food-list">
           <h1 class="title">{{item.name}}</h1>
@@ -34,11 +34,12 @@
         </li>
       </ul>
     </div>
-
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import BScroll from 'better-scroll'
+
   const ERR_OK = 0
 
   export default {
@@ -59,8 +60,17 @@
         response = response.body
         if (response.errno === ERR_OK) {
           this.goods = response.data
+          this.$nextTick(() => {
+            this._initScroll()
+          })
         }
       })
+    },
+    methods: {// when I create at the first time, I typed "method", then browser keep complain about "_initScroll is not a function"
+      _initScroll() {
+        this.menuScroll = new BScroll(this.$refs.menuWrapper, {})
+        this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {})
+      }
     }
   }
 </script>
@@ -123,12 +133,13 @@
             line-height: 14px
             color: rgb(7, 17, 27)
           .desc, .extra
-            line-height: 10px
             font-size: 10px
             color: rgb(147, 153, 159)
           .desc
+            line-height: 12px
             margin-bottom: 8px
           .extra
+            line-height: 10px
             .count
               margin-right: 12px
           .price

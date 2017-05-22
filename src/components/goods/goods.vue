@@ -9,7 +9,7 @@
         </li>
       </ul>
     </div>
-    <div class="foods-wrapper"></div>
+    <div class="foods-wrapper">
       <ul>
         <li v-for="item in goods" class="food-list">
           <h1 class="title">{{item.name}}</h1>
@@ -34,6 +34,8 @@
           </ul>
         </li>
       </ul>
+    </div>
+
   </div>
 </template>
 
@@ -90,8 +92,21 @@
           display: table-cell
           width: 56px
           vertical-align: middle
-          border-1px(rgba( 7, 17, 27, 0.1))
+          border-1px(rgba(7, 17, 27, 0.1))
           font-size: 12px
     .foods-wrapper
       flex: 1
+      .title
+        padding-left: 14px
+        height: 26px
+        line-height: 26px
+        font-size: 12px
+        color: rgb(147, 153, 159)
+        border-left: 2px solid #d9dde1
+        background: #f3f5f7
+      .food-item
+        display: flex
+        margin: 18px
+        padding-bottom: 18px
+        border-1px(rgba(7, 17, 27, 0.1))
 </style>

@@ -14,9 +14,9 @@
         <li v-for="item in goods" class="food-list">
           <h1 class="title">{{item.name}}</h1>
           <ul>
-            <li v-for="food in item.foods" class="food-item">
+            <li v-for="food in item.foods" class="food-item border-1px">
               <div class="icon">
-                <img :src="food.icon"/>
+                <img width="57" height="57" :src="food.icon"/>
               </div>
               <div class="content">
                 <h2 class="name">{{food.name}}</h2>
@@ -109,4 +109,10 @@
         margin: 18px
         padding-bottom: 18px
         border-1px(rgba(7, 17, 27, 0.1))
+        &:last-child
+          border-none()
+          margin-bottom: 0
+        .icon
+          flex: 0 0 57px
+          margin-right: 10px
 </style>

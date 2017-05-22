@@ -61,6 +61,7 @@
 <script type="text/ecmascript-6">
   import star from '@/components/star/Star'
   import detailTitle from '@/components/lizard/DetailTitle'
+//  import domain from '@/components/lizard/Domain'
 
   export default {
     props: {
@@ -82,6 +83,7 @@
       }
     },
     created() {
+//        this.classMap = domain.classMap
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
     },
     components: {

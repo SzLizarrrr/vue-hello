@@ -2,8 +2,7 @@
   <div class="goods">
     <div class="menu-wrapper" ref="menuWrapper">
       <ul>
-        <li v-for="(item,index) in goods" :key="index" class="menu-item" :class="{'current':currentIndex===index}"
-            @click="selectMenu(index,$event)">
+        <li v-for="(item,index) in goods" :key="index" class="menu-item" :class="{'current':currentIndex===index}" @click="selectMenu(index,$event)">
           <span class="text border-1px">
             <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>{{item.name}}
           </span>
@@ -17,16 +16,19 @@
           <ul>
             <li v-for="(food, index) in item.foods" :key="index" class="food-item border-1px">
               <div class="icon">
-                <img width="57" height="57" :src="food.icon"/>
+                <img width="57" height="57" :src="food.icon" />
               </div>
               <div class="content">
                 <h2 class="name">{{food.name}}</h2>
                 <p class="desc">{{food.description}}</p>
                 <div class="extra">
-                  <span class="count">{{food.sellCount}} selled per month.</span><span>Rate{{food.rating}}%</span>
+                  <span class="count">{{food.sellCount}} selled per month.</span>
+                  <span>Rate{{food.rating}}%</span>
                 </div>
                 <div class="price">
-                  <span class="money-sign">￥</span><span class="new">{{food.price}}</span><span v-show="food.oldPrice" class="old">￥{{food.oldPrice}}</span>
+                  <span class="money-sign">￥</span>
+                  <span class="new">{{food.price}}</span>
+                  <span v-show="food.oldPrice" class="old">￥{{food.oldPrice}}</span>
                 </div>
               </div>
             </li>
@@ -38,9 +40,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-import BScroll from "better-scroll";
+import BScroll from 'better-scroll'
 
-const ERR_OK = 0;
+const ERR_OK = 0
 
 export default {
   props: {
@@ -53,70 +55,70 @@ export default {
       goods: [],
       listHeight: [],
       scrollY: 0
-    };
+    }
   },
   computed: {
     currentIndex() {
       for (let i = 0; i < this.listHeight.length; i++) {
-        let height1 = this.listHeight[i];
-        let height2 = this.listHeight[i + 1];
+        let height1 = this.listHeight[i]
+        let height2 = this.listHeight[i + 1]
         if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
-          return i;
+          return i
         }
       }
-      return 0;
+      return 0
     }
   },
   created() {
-    this.classMap = ["decrease", "discount", "special", "invoice", "guarantee"];
+    this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
 
-    this.$http.get("/api/goods").then(response => {
-      response = response.body;
+    this.$http.get('/api/goods').then(response => {
+      response = response.body
       if (response.errno === ERR_OK) {
-        this.goods = response.data;
+        this.goods = response.data
         this.$nextTick(() => {
-          this._initScroll();
-          this._calculateHeight();
-        });
+          this._initScroll()
+          this._calculateHeight()
+        })
       }
-    });
+    })
   },
   methods: {
     // when I create at the first time, I typed "method", then browser keep complain about "_initScroll is not a function"
     selectMenu(index, event) {
       if (!event._constructed) {
-        return;
+        return
       }
-      let foodList = this.$refs.foodList;
-      let el = foodList[index];
-      this.foodsScroll.scrollToElement(el, 300);
+      let foodList = this.$refs.foodList
+      let el = foodList[index]
+      this.foodsScroll.scrollToElement(el, 300)
     },
     _initScroll() {
       this.menuScroll = new BScroll(this.$refs.menuWrapper, {
         click: true
-      });
+      })
       this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
         click: true,
         probeType: 3
-      });
+      })
 
-      this.foodsScroll.on("scroll", pos => {
+      this.foodsScroll.on('scroll', pos => {
         // not very understand pos mean, too late, figure it out tomorrow
-        this.scrollY = Math.abs(Math.round(pos.y));
-      });
+        this.scrollY = Math.abs(Math.round(pos.y))
+      })
     },
     _calculateHeight() {
-      let foodList = this.$refs.foodList;
-      let height = 0;
-      this.listHeight.push(height);
+      let foodList = this.$refs.foodList
+      let height = 0
+      this.listHeight.push(height)
       for (let i = 0; i < foodList.length; i++) {
-        let item = foodList[i];
-        height += item.clientHeight;
-        this.listHeight.push(height);
+        let item = foodList[i]
+        height += item.clientHeight
+        this.listHeight.push(height)
       }
     }
   }
-};
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
